@@ -10,30 +10,36 @@ async function fetchImage() {
     return;
   }
 
-  const imgs = "";
+  imgs = "";
 
   try {
+    btnElement.style.display = "None";
+    const loading = `<img src = "spinner.svg"/>`;
+    galleryElement.innerHTML = loading;
     await fetch(
       `https://api.unsplash.com/photos?per_page=${inputValue}&page=${Math.round(
         Math.random() * 1000
       )}&client_id=ZiXZ5ythcVAvsx7CQgm_gU8AmaAz2qzRrglNQusoYtk`
     ).then((res) =>
       res.json().then((data) => {
-        console.log(data);
         if (data) {
           data.forEach((pic) => {
-            //console.log(pic.urls.small);
-            imgs += `<img src="${pic.urls.small}" alt="image"`;
+            imgs += `
+            <img src=${pic.urls.small} alt="image"/>
+            `;
             galleryElement.style.display = "block";
             galleryElement.innerHTML = imgs;
+            btnElement.style.display = "block";
+            errorMessageElement.style.display = "None";
           });
         }
       })
     );
-    errorMessageElement.style.display = "None";
   } catch (error) {
     errorMessageElement.style.display = "Block";
     errorMessageElement.innerText = "An error happened";
+    btnElement.style.display = "block";
+    galleryElement.style.display = "none";
   }
 }
 btnElement.addEventListener("click", fetchImage);
