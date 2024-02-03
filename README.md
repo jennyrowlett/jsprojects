@@ -10,6 +10,11 @@ These projects are based on the following books/courses:
 Here are the project descriptions and my additions.
 
 1. svg
+
 2. frequency- This program allows the user to type in characters and creates a dyanmic graph based on character frequency. It utilizes the library d3. Additon:
+
 3. data- This program allow a user to append a circle to the beginning or end. It also allows you to drop circles.
+
 4. gallery- This program allows a user to get up to 10 random images using the Unsplash API.
+
+5. recipebook- This program allows a user to get recipes. It utilizes the spoonacular API.
